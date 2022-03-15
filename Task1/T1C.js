@@ -1,5 +1,6 @@
 const testArray = [1,1,1,2,2,3,4,4,5,5,5,5];
 
+// low complexity
 
 const getUniqueElement = arr => {
     let n = arr.length
@@ -15,6 +16,8 @@ const getUniqueElement = arr => {
 //console.log(getUniqueElement(testArray))  result 3
 
 
+
+// high complexity
 
 const uniqueValueOfArray = initArray => {
 
