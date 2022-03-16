@@ -42,9 +42,13 @@ const changeTable = () => {
     console.log('Check started')
 }
 
+const withDelay = () => {
+    setTimeout(changeTable, 3000)
+}
+
 const button = document.createElement('button')
 button.innerHTML = 'refactor'
-button.addEventListener('click', changeTable )
+button.addEventListener('click', withDelay )
 document.querySelector('.todolist').appendChild(button)
 
 
