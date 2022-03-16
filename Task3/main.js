@@ -30,17 +30,23 @@ document.querySelector('.content').innerHTML = `<table class="todolist"></table>
 
 for (let el of downloads) {
     let row = document.createElement('tr')
-    row.innerHTML = `<td>${el.title}</td> <td>${el.status}</td>`
+    row.innerHTML = `<td>${el.title}</td> <td class="status">${el.status}</td>`
     document.querySelector('.todolist').appendChild(row)
 }
 
+const statuses = document.querySelectorAll('.status')
+
 const changeTable = () => {
-    alert('hello')
+
+    statuses.forEach(s => s.innerHTML !== "Done" ? s.innerHTML = `Done` : s)
     console.log('Check started')
 }
 
-let button = document.createElement('button')
+const button = document.createElement('button')
 button.innerHTML = 'refactor'
 button.addEventListener('click', changeTable )
 document.querySelector('.todolist').appendChild(button)
+
+
+
 
