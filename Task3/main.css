@@ -6,3 +6,8 @@
 .todolist button {
     margin-top: 10px;
 }
+
+.status {
+    background-color: #ecfcf7;
+    width: 55px;
+}
