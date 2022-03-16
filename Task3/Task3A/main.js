@@ -38,8 +38,15 @@ const statuses = document.querySelectorAll('.status')
 
 const changeTable = () => {
 
-    statuses.forEach(s => s.innerHTML !== "Done" ? s.innerHTML = `Done` : s)
-    console.log('Check started')
+    statuses.forEach((status, currentIndex) => {
+
+        setInterval(() => {
+            if (status.innerHTML === 'Pending') {
+                status.innerHTML = `Done`
+                console.log('Check started')
+            }
+        }, 5000 * currentIndex)
+    })
 }
 
 const withDelay = () => {
@@ -47,10 +54,9 @@ const withDelay = () => {
 }
 
 const button = document.createElement('button')
-button.innerHTML = 'refactor'
+button.innerHTML = 'Check'
 button.addEventListener('click', withDelay )
 document.querySelector('.todolist').appendChild(button)
-
 
 
 
