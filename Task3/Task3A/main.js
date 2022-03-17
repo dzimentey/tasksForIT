@@ -36,26 +36,24 @@ for (let el of downloads) {
 
 const statuses = document.querySelectorAll('.status')
 
-const changeTable = () => {
-
-    statuses.forEach((status, currentIndex) => {
-
-        setInterval(() => {
-            if (status.innerHTML === 'Pending') {
-                status.innerHTML = `Done`
-                console.log('Check started')
-            }
-        }, 5000 * currentIndex)
-    })
+const checkWithInterval = () => {
+    console.log(`Check started`)
+    let int = setInterval(()=> {
+        console.log(`Check started`)
+        let index = [...statuses].findIndex(el => el.innerHTML === 'Pending')
+        if(index !== -1) {
+            statuses[index].innerHTML = 'Done'
+        } else {clearInterval(int)}
+    }, 5000)
 }
 
-const withDelay = () => {
-    setTimeout(changeTable, 3000)
+const startChecking = () => {
+    setTimeout(checkWithInterval, 3000)
 }
 
 const button = document.createElement('button')
 button.innerHTML = 'Check'
-button.addEventListener('click', withDelay )
+button.addEventListener('click', startChecking)
 document.querySelector('.todolist').appendChild(button)
 
 
