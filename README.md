@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+## Available Scripts
+
+You can view the working application using the link: 
+ [ Acted App](https://dzimentey.github.io/dev-port)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
