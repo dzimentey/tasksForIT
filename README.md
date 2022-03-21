@@ -1,7 +1,5 @@
-## Available Scripts
-
-You can view the working application using the link: 
- [ Acted App](https://dzimentey.github.io/dev-port)
+## You can view the working application using the link: 
+ ### [ Acted App](https://dzimentey.github.io/dev-port)
 
 ## Getting Started with Create React App
 
