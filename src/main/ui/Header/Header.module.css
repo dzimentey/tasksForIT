@@ -1,0 +1,32 @@
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #f5f5ff;
+  border: 4px solid #ddcddb;
+  border-radius: 15px;
+  width: 100%;
+
+  flex-wrap: wrap;
+}
+
+.item {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 10px;
+}
+
+.item a {
+  color: #62309d;
+}
+
+.item a.active {
+  color: black;
+  -webkit-transform: scale(1.2);
+  /*background-color: #fff5fc;*/
+  text-decoration: underline;
+  text-decoration-color: #fff5fc;
+  text-decoration-thickness: 7px
+}
