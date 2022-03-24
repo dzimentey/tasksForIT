@@ -59,12 +59,12 @@ export const Skills = () => {
                     Stack of technologies
                 </Typography>
                 <div style={{display: "flex", flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {firstSkillsBlock.map(skill => <p><CheckIcon
+                    <Typography variant="body2" color="textSecondary" component="h6">
+                        {firstSkillsBlock.map(skill => <p key={skill}><CheckIcon
                             style={{fontSize: '14px', color: '#62309d'}}/> {skill}</p>)}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {secondSkillsBlock.map(skill => <p><CheckIcon
+                    <Typography variant="body2" color="textSecondary" component="h6">
+                        {secondSkillsBlock.map(skill => <p key={skill}><CheckIcon
                             style={{fontSize: '14px', color: '#62309d'}}/> {skill}</p>)}
                     </Typography>
                 </div>
