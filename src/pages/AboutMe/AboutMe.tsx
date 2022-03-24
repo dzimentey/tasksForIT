@@ -7,9 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
-import picture from "../common/assets/img/react-JS-image-min.jpg"
-import {Path} from "../Routes/Routes";
+import picture from "../../assets/react-JS-image-min.jpg"
+import {Path} from "../../App";
 import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -22,6 +21,12 @@ const useStyles = makeStyles({
   },
 });
 
+const profileDescription: string =
+    `Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`
+
+
 export const AboutMe = () => {
   const classes = useStyles();
   return (
@@ -30,7 +35,6 @@ export const AboutMe = () => {
         <Typography gutterBottom variant="h5" component="h2" align={"center"}>
           About Me
         </Typography>
-
         {/*<CardActionArea>*/}
         <div >
           <CardMedia
@@ -46,9 +50,7 @@ export const AboutMe = () => {
             React developer
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              {profileDescription}
           </Typography>
         </CardContent>
         {/*</CardActionArea>*/}

@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import classes from "./Header.module.css";
-import { Path } from "../Routes/Routes";
 import {AppBar, Button} from "@material-ui/core";
+import {Path} from "../../App";
+import {NavLink} from "react-router-dom";
 
 export const Header = () => {
 
@@ -12,21 +12,21 @@ export const Header = () => {
 
             <div className={classes.item}>
                 <Button color={"secondary"} variant={"text"} size={"large"}>
-                    <NavLink to={Path.AboutMe} activeClassName={classes.active}>
+                    <NavLink to={Path.AboutMe} className={({ isActive }) => isActive ? classes.active : undefined}>
                         About Me
                     </NavLink>
                 </Button>
             </div>
             <div className={classes.item}>
                 <Button color={"secondary"} variant={"text"} size={"large"}>
-                    <NavLink to={Path.Skills} activeClassName={classes.active}>
+                    <NavLink to={Path.Skills} className={({ isActive }) => isActive ? classes.active : undefined}>
                         Skills
                     </NavLink>
                 </Button>
             </div>
             <div className={classes.item}>
                 <Button color={"secondary"} variant={"text"} size={"large"}>
-                    <NavLink to={Path.Contacts} activeClassName={classes.active}>
+                    <NavLink to={Path.Contacts} className={({ isActive }) => isActive ? classes.active : undefined}>
                         Contacts
                     </NavLink>
                 </Button>
