@@ -33,6 +33,15 @@ const useStyles = makeStyles({
         margin: 'auto',
         marginTop: 20
     },
+    skillsBlock: {
+        display: "flex",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    icons: {
+        fontSize: 14,
+        color: '#62309d',
+    },
 });
 
 export const Skills = () => {
@@ -58,25 +67,23 @@ export const Skills = () => {
                 <Typography gutterBottom variant="h5" component="h2">
                     Stack of technologies
                 </Typography>
-                <div style={{display: "flex", flexDirection: 'row', justifyContent: 'space-between'}}>
+                <div className={classes.skillsBlock}>
                     <Typography variant="body2" color="textSecondary" component="h6">
-                        {firstSkillsBlock.map(skill => <p key={skill}><CheckIcon
-                            style={{fontSize: '14px', color: '#62309d'}}/> {skill}</p>)}
+                        {firstSkillsBlock.map(skill => <p key={skill}><CheckIcon className={classes.icons}/> {skill}</p>)}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="h6">
-                        {secondSkillsBlock.map(skill => <p key={skill}><CheckIcon
-                            style={{fontSize: '14px', color: '#62309d'}}/> {skill}</p>)}
+                        {secondSkillsBlock.map(skill => <p key={skill}><CheckIcon className={classes.icons}/> {skill}</p>)}
                     </Typography>
                 </div>
             </CardContent>
             {/*</CardActionArea>*/}
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small">
                     <NavLink to={Path.AboutMe}>
                         About Me
                     </NavLink>
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small">
                     <NavLink to={Path.Contacts}>
                         Contacts
                     </NavLink>

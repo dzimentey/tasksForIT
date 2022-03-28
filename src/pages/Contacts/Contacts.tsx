@@ -21,7 +21,16 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         width: 800,
         margin: 'auto',
-        marginTop: 20
+        marginTop: 20,
+    },
+    contactsBlock: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: 13.5,
+    },
+    icons: {
+        color: '#62309d',
+        fontSize: 20,
     },
 });
 
@@ -56,27 +65,27 @@ export const Contacts = () => {
                 <Typography variant="body2" color="textSecondary" component="p">
                     {addressIntro}
                 </Typography>
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '15px'}}>
-                    <Typography variant="body2" color="textPrimary" component="p">
-                        <LocationOnOutlinedIcon fontSize={"small"} style={{color: '#62309d'}}/> {address}
+                <div className={classes.contactsBlock}>
+                    <Typography variant="body2" component="p">
+                        <LocationOnOutlinedIcon className={classes.icons}/> {address}
                     </Typography>
-                    <Typography variant="body2" color="textPrimary" component="p">
-                        <PermPhoneMsgOutlinedIcon fontSize={"small"} style={{color: '#62309d'}}/> {phone}
+                    <Typography variant="body2" component="p">
+                        <PermPhoneMsgOutlinedIcon className={classes.icons}/> {phone}
                     </Typography>
-                    <Typography variant="body2" color="textPrimary" component="p">
-                        <MailOutlineOutlinedIcon fontSize={"small"} style={{color: '#62309d'}}/> {mail}
+                    <Typography variant="body2" component="p">
+                        <MailOutlineOutlinedIcon className={classes.icons}/> {mail}
                     </Typography>
                 </div>
                 <Divider/>
             </CardContent>
             {/*</CardActionArea>*/}
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small">
                     <NavLink to={Path.AboutMe}>
                         About Me
                     </NavLink>
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small">
                     <NavLink to={Path.Skills}>
                         Skills
                     </NavLink>

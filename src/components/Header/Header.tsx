@@ -7,8 +7,7 @@ import {NavLink} from "react-router-dom";
 export const Header = () => {
 
     return (
-        <AppBar position="static" className={classes.nav} color={"inherit"}
-                style={{flexDirection: "row"}}>
+        <AppBar position="static" className={classes.nav} >
 
             <div className={classes.item}>
                 <Button color={"secondary"} variant={"text"} size={"large"}>

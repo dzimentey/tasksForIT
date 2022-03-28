@@ -55,12 +55,12 @@ export const AboutMe = () => {
         </CardContent>
         {/*</CardActionArea>*/}
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small">
             <NavLink to={Path.Skills} >
               Skills
             </NavLink>
           </Button>
-          <Button size="small" color="primary">
+          <Button size="small">
             <NavLink to={Path.Contacts} >
               Contacts
             </NavLink>
