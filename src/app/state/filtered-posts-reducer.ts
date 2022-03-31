@@ -23,6 +23,21 @@ export const filteredPostsReducer = (state: PostsType = [], action: ActionsType)
 export const getFilteredPostsAC = (posts: PostsType) => ({type: 'FILTERED-POSTS/GET-POSTS-BY-USER', posts}) as const
 export const removePostsAC = (userId: number) => ({type: 'FILTERED-POSTS/REMOVE-POSTS-BY-USER', userId}) as const
 
+
+//Saga
+
+export function* getFilteredPostsSaga(action: ReturnType<typeof getFilteredPosts>) {
+    try {
+        const res: AxiosResponse<PostsType> = yield call(usersAPI.getPostsByUser, action.userId)
+        yield put(getFilteredPostsAC(res.data))
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export const getFilteredPosts = (userId: number) => ({type: 'GET-FILTERED-POSTS', userId}) as const
+
 //Thunk
 
 // export const getFilteredPostsTC = (userId: number) => async (dispatch: Dispatch) => {
@@ -33,17 +48,3 @@ export const removePostsAC = (userId: number) => ({type: 'FILTERED-POSTS/REMOVE-
 //         console.log(error)
 //     }
 // }
-
-//Saga
-
-export function* getFilteredPostsSaga(action: ReturnType<typeof getFilteredPosts>) {
-    try {
-        const res: AxiosResponse<PostsType> = yield call(usersAPI.getPostsByUser, action.userId)
-        yield put(getFilteredPostsAC(res.data))
-    }
-    catch(error: any){
-        console.log(error.message)
-    }
-}
-
-export const getFilteredPosts = (userId: number) => ({type: 'GET-FILTERED-POSTS', userId}) as const
