@@ -8,6 +8,7 @@ import {takeEvery} from 'redux-saga/effects';
 import {getAllPostsSaga, getSelectedUsersPostsSaga} from "./all-posts/sagas";
 import {getCommentsSaga} from "./comments/sagas";
 import {getUsersSaga} from "./users/sagas";
+import { debounce} from "redux-saga/effects";
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
@@ -22,10 +23,9 @@ const sagaMiddleware = createSagaMiddleware()
 export const store = createStore(rootReducer, applyMiddleware(thunk, sagaMiddleware))
 
 sagaMiddleware.run(rootWatcher)
-
 function* rootWatcher() {
     yield takeEvery('GET-USERS', getUsersSaga)
-    yield takeEvery('GET-COMMENTS', getCommentsSaga)
+    yield debounce(500,'GET-COMMENTS', getCommentsSaga)
     yield takeEvery('GET-ALL-POSTS', getAllPostsSaga)
-    yield takeEvery('GET-SELECTED-POSTS', getSelectedUsersPostsSaga)
+    yield debounce(700,'GET-SELECTED-POSTS', getSelectedUsersPostsSaga)
 }

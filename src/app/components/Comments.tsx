@@ -11,8 +11,7 @@ export const Comments = ({comments, post,}:CommentsPropsType) => {
     return(
         <div className={'comments'}>
             {comments.map(com => com.postId === post.id
-                ? <div key={com.id}> <p>{com.id} {com.body}</p><hr/></div>
-                : ''
+                && <div key={com.id}> <p>{com.id} {com.body}</p><hr/></div>
             )}
         </div>
     )
