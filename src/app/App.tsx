@@ -13,6 +13,7 @@ import {getComments} from "./state/comments/sagas";
 import {UsersType} from "./state/users/users-type";
 import {getCheckedUsers, getUsers} from "./state/users/sagas";
 import {changeUserStatusAC} from "./state/users/actions";
+import {LinearProgress} from "@mui/material";
 
 function App() {
 
@@ -20,9 +21,11 @@ function App() {
     const users = useSelector<AppRootStateType, UsersType>(state => state.users)
     const allPosts = useSelector<AppRootStateType, PostsType>(state => state.allPosts)
     const comments = useSelector<AppRootStateType, CommentsType>(state => state.comments)
-   // const url = new URL(window.location.href)
-   // const navigate = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams()
+    const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.isLoading)
+    // const url = new URL(window.location.href)
+    // const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams();
+
 
     useEffect(() => {
         //dispatch(getAllPosts())
@@ -70,8 +73,11 @@ function App() {
     return (
         <div className={'App'}>
             <div className={'mainBlock'}>
-                <Posts allPosts={allPosts} hideComments={hideComments}
-                       getCommentsForPost={getCommentsForPost} comments={comments}/>
+                <div>
+                    {isLoading && <LinearProgress color={'secondary'} className={'progress'}/>}
+                    <Posts allPosts={allPosts} hideComments={hideComments}
+                            getCommentsForPost={getCommentsForPost} comments={comments}/>
+                </div>
                 <Filer users={users} getPostsByUser={getPostsByUser}/>
             </div>
         </div>

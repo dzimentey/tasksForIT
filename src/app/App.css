@@ -3,6 +3,7 @@
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 5px 0;
 }
 
 .postsBlock {
@@ -80,3 +81,8 @@
     border: 1px solid #999;
 }
 
+.progress {
+    position: relative;
+    margin-bottom: -4px;
+    width: 454px;
+}

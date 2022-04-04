@@ -3,6 +3,7 @@ import {PostsType} from "./post-type";
 import {call, put} from "redux-saga/effects";
 import {usersAPI} from "../../../api/api";
 import {getAllPostsAC, getSelectedUsersPostsAC} from "./actions";
+import {setStatusAC} from "../../app-reducer";
 
 
 // Saga
@@ -21,12 +22,16 @@ export const getAllPosts = () => ({type: 'GET-ALL-POSTS'}) as const
 
 
 export function* getSelectedUsersPostsSaga(action: ReturnType<typeof getSelectedUsersPosts>) {
+    yield put(setStatusAC(true))
     try {
         const res: AxiosResponse<PostsType> = yield call(usersAPI.getSelectedUsersPosts, action.data)
         yield put(getSelectedUsersPostsAC(res.data))
     }
     catch(error){
         console.log(error)
+    }
+    finally {
+        yield put(setStatusAC(false))
     }
 }
 

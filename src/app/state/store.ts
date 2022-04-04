@@ -9,10 +9,12 @@ import {getAllPostsSaga, getSelectedUsersPostsSaga} from "./all-posts/sagas";
 import {getCommentsSaga} from "./comments/sagas";
 import {getUsersSaga} from "./users/sagas";
 import { debounce} from "redux-saga/effects";
+import {appReducer} from "../app-reducer";
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
 const rootReducer = combineReducers({
+    app: appReducer,
     users: usersReducer,
     allPosts: allPostsReducer,
     comments: commentsReducer,
