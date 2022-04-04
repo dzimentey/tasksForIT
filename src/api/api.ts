@@ -20,7 +20,7 @@ export const usersAPI = {
         return instance.get<CommentsType>(`posts/${postId}/comments`)
     },
     getSelectedUsersPosts(data: string){
-        return instance.get<PostsType>(`posts${data}`)
+        return instance.get<PostsType>(`posts?${data}`)
     },
 }
 
