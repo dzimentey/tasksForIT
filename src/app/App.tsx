@@ -11,7 +11,7 @@ import {CommentsType} from "./state/comments/comments-type";
 import {filterCommentsAC} from "./state/comments/actions";
 import {getComments} from "./state/comments/sagas";
 import {UsersType} from "./state/users/users-type";
-import {getCheckedUsers, getUsers} from "./state/users/sagas";
+import {getUsers} from "./state/users/sagas";
 import {changeUserStatusAC} from "./state/users/actions";
 import {LinearProgress} from "@mui/material";
 
@@ -28,10 +28,8 @@ function App() {
 
 
     useEffect(() => {
-        //dispatch(getAllPosts())
-        dispatch(getUsers())
+        dispatch(getUsers(dispatch))
         dispatch(getSelectedUsersPosts(searchParams.toString()))
-        dispatch(getCheckedUsers())
     }, [])
 
     const getPostsByUser = (id: number, isChecked: boolean) => {
@@ -42,7 +40,6 @@ function App() {
             // navigate(url)
             searchParams.append('userId', `${userId}`)
             setSearchParams(searchParams)
-            console.log(searchParams.toString())
             dispatch(getSelectedUsersPosts(searchParams.toString()))
         }
 
