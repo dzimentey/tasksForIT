@@ -22,10 +22,7 @@ function App() {
     const allPosts = useSelector<AppRootStateType, PostsType>(state => state.allPosts)
     const comments = useSelector<AppRootStateType, CommentsType>(state => state.comments)
     const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.isLoading)
-    // const url = new URL(window.location.href)
-    // const navigate = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams();
-
+    const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
         dispatch(getUsers(dispatch))
@@ -35,9 +32,6 @@ function App() {
     const getPostsByUser = (id: number, isChecked: boolean) => {
 
         const setUsers = (userId: number) => {
-            // url.searchParams.append('userId', `${userId}`)
-            // window.history.replaceState({}, '', url) // instead navigate(url)
-            // navigate(url)
             searchParams.append('userId', `${userId}`)
             setSearchParams(searchParams)
             dispatch(getSelectedUsersPosts(searchParams.toString()))
@@ -45,12 +39,9 @@ function App() {
 
         if (!isChecked) {
             dispatch(changeUserStatusAC(id, isChecked))
-            //const paramsArray = url.search.slice(1).split('&') // get params, remove "?" from beginning of the sting, convert to the Array
             const paramsArray = searchParams.toString().split('&') // get params, convert to the Array
             const newArray = paramsArray.filter(u => u.slice(7) !== id.toString()) // remove repeated params
             const newParams = newArray.join('&') // join back to sting
-            //window.history.replaceState({}, '', `${window.location.pathname}?${newParams}`) // native code of adding params to the url bar
-            //navigate(`?${newParams}`) // add params to the URL and put it in the url bar
             setSearchParams(newParams)
             dispatch(getSelectedUsersPosts(newParams))
         } else {
