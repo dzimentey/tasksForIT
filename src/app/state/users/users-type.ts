@@ -7,8 +7,3 @@ type UserType = {
 }
 
 export type UsersType = Array<UserType>
-
-export type ActionType = {
-    type: 'GET-USERS',
-    dispatch: (func: any) => {}
-}

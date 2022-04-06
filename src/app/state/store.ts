@@ -1,5 +1,4 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
-import thunk from 'redux-thunk';
 import {usersReducer} from "./users/users-reducer";
 import {allPostsReducer} from "./all-posts/all-posts-reducer";
 import {commentsReducer} from "./comments/coments-reducer";
@@ -8,7 +7,7 @@ import {takeEvery} from 'redux-saga/effects';
 import {getAllPostsSaga, getSelectedUsersPostsSaga} from "./all-posts/sagas";
 import {getCommentsSaga} from "./comments/sagas";
 import {getUsersSaga} from "./users/sagas";
-import { debounce} from "redux-saga/effects";
+import {debounce} from "redux-saga/effects";
 import {appReducer} from "../app-reducer";
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
@@ -22,9 +21,10 @@ const rootReducer = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware()
 
-export const store = createStore(rootReducer, applyMiddleware(thunk, sagaMiddleware))
+export const store = createStore(rootReducer, applyMiddleware( sagaMiddleware))
 
 sagaMiddleware.run(rootWatcher)
+
 function* rootWatcher() {
     yield takeEvery('GET-USERS', getUsersSaga)
     yield debounce(500,'GET-COMMENTS', getCommentsSaga)

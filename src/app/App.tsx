@@ -23,10 +23,11 @@ function App() {
     const comments = useSelector<AppRootStateType, CommentsType>(state => state.comments)
     const isLoading = useSelector<AppRootStateType, boolean>(state => state.app.isLoading)
     const [searchParams, setSearchParams] = useSearchParams()
+    const urlParams: string = searchParams.toString()
 
     useEffect(() => {
-        dispatch(getUsers(dispatch))
-        dispatch(getSelectedUsersPosts(searchParams.toString()))
+        dispatch(getUsers(urlParams))
+        dispatch(getSelectedUsersPosts(urlParams))
     }, [])
 
     const getPostsByUser = (id: number, isChecked: boolean) => {
@@ -40,8 +41,8 @@ function App() {
         if (!isChecked) {
             dispatch(changeUserStatusAC(id, isChecked))
             const paramsArray = searchParams.toString().split('&') // get params, convert to the Array
-            const newArray = paramsArray.filter(u => u.slice(7) !== id.toString()) // remove repeated params
-            const newParams = newArray.join('&') // join back to sting
+            const filteredArray = paramsArray.filter(u => u.slice(7) !== id.toString()) // remove unchecked params
+            const newParams = filteredArray.join('&') // join back to sting
             setSearchParams(newParams)
             dispatch(getSelectedUsersPosts(newParams))
         } else {
@@ -66,9 +67,10 @@ function App() {
                     <Posts allPosts={allPosts} hideComments={hideComments}
                             getCommentsForPost={getCommentsForPost} comments={comments}/>
                 </div>
-                <Filer users={users} getPostsByUser={getPostsByUser}/>
+                    <Filer users={users} getPostsByUser={getPostsByUser}/>
             </div>
         </div>
     )
 }
+
 export default App;

@@ -1,13 +1,12 @@
 import {AxiosResponse} from "axios";
-import {ActionType, UsersType} from "./users-type";
+import {UsersType} from "./users-type";
 import {call, put} from "redux-saga/effects";
 import {usersAPI} from "../../../api/api";
-import {changeUserStatusAC, getUsersAC} from "./actions";
-import {Dispatch} from "redux";
+import {getUsersAC, setUserStatusAC} from "./actions";
 
 // Saga
 
-export function* getUsersSaga(action: ActionType) {
+export function* getUsersSaga(action: ReturnType<typeof getUsers>) {
 
     try {
         const res: AxiosResponse<UsersType> = yield call(usersAPI.getUsersForFilter)
@@ -17,16 +16,11 @@ export function* getUsersSaga(action: ActionType) {
         console.log(error)
     }
     finally {
-        yield action.dispatch(getCheckedUsers())
+        const paramsArray = action.urlParams.split('&')
+        const idArray: Array<number> = []
+        paramsArray.forEach(u => idArray.push(+u.slice(7)))
+        yield put(setUserStatusAC(idArray))
     }
 }
 
-export const getUsers = (dispatch: Dispatch) => ({type: 'GET-USERS', dispatch}) as const
-
-//Thunk
-
-export const getCheckedUsers = () => (dispatch: Dispatch) => {
-    const url = new URL(window.location.href)
-    const paramsArray = url.search.slice(1).split('&')
-    paramsArray.forEach(u => dispatch(changeUserStatusAC(+u.slice(7), true)))
-}
+export const getUsers = (urlParams: string) => ({type: 'GET-USERS', urlParams}) as const
