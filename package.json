@@ -2,7 +2,7 @@
   "name": "users-and-posts-url-save-saga",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dzimentey.github.io/dev-port",
+  "homepage": "https://dzimentey.github.io/tfi",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
